@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
+const { protect } = require("./middleware/auth.js");
 require("dotenv").config();
 
 app.use(cors());
@@ -26,8 +27,10 @@ connection.once("open", () => {
 });
 
 const userRouter = require("./routes/userRoute.js");
+const loginSignUpRouter = require("./routes/loginSignUpRoute.js");
 
-app.use("/user", userRouter);
+app.use("/user", protect, userRouter);
+app.use("/", loginSignUpRouter);
 
 app.listen(PORT, () => {
   console.log("server is up and running on port %d", PORT);

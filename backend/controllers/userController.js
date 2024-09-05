@@ -2,6 +2,7 @@ const userService = require("../services/userService");
 const asyncHandler = require("express-async-handler");
 const userModal = require("../models/userModal");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const createUser = asyncHandler(async (req, res) => {
   try {
@@ -39,6 +40,37 @@ const getAllUsers = asyncHandler(async (req, res) => {
   }
 });
 
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await userService.getUserByEmail(email);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordMatch) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  const token = jwt.sign(
+    {
+      id: user._id,
+      email: user.email,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "24h" }
+  );
+
+  console.log(user);
+  return res.status(200).json({
+    user,
+    token,
+  });
+});
+
 const updateUser = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
@@ -61,4 +93,5 @@ module.exports = {
   createUser,
   getAllUsers,
   updateUser,
+  login,
 };

@@ -5,9 +5,9 @@ const {
   createUser,
   getAllUsers,
   updateUser,
+  login,
 } = require("../controllers/userController");
 
-router.post("/add-user", createUser);
 router.get("/get-users", getAllUsers);
 router.post("/update-user/:id", updateUser);
 

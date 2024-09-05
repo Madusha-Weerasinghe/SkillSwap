@@ -31,7 +31,18 @@ const getUserById = (userid) => {
   }
 };
 
+const getUserByEmail = (email) => {
+  try {
+    const user = userModel.findOne({ email: email });
+    return user || null;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Internal Server Error");
+  }
+};
+
 module.exports = {
   createUser,
   getUserById,
+  getUserByEmail,
 };
