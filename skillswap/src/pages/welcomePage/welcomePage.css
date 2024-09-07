@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+body {
+  background-image: url("../../assets/img/welcomePage/background2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  margin-left: 125px;
+  margin-right: 125px;
+  margin-top: 100px;
+}
+
+.right {
+  padding-top: 20px;
+}
+
+#headText {
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#subText {
+  font-family: "Roboto", sans-serif;
+  font-size: 22px;
+}
+
+#discription {
+  font-family: "Roboto", sans-serif;
+}
+
+.btnContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Two equal columns */
+  margin-top: 50px;
+}
+
+#signIn {
+  background-color: rgba(255, 255, 255, 0.3);
+  align-self: center;
+  width: 150px;
+  height: 35px;
+  border-radius: 15px;
+  border: solid 1px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#signUp {
+  background-color: rgba(255, 255, 255, 0.3);
+  align-self: center;
+  width: 150px;
+  height: 35px;
+  border-radius: 15px;
+  border: solid 1px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#signUp:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+#signIn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.image {
+  width: 75%;
+  padding-left: 100px;
+}
