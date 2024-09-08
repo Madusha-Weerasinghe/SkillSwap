@@ -7,8 +7,8 @@ const NavBar = () => {
       <h2>SkillSwap</h2>
       <div className="navbar-links">
         <ul>
-          <button>Sign In</button>
-          <button>Sign Up</button>
+          <button id="navBtn">Sign In</button>
+          <button id="navBtn">Sign Up</button>
         </ul>
       </div>
     </nav>

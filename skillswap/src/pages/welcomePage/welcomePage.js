@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../../components/navBar/navBar";
 import "./welcomePage.css";
 import arrow from "../../assets/img/welcomePage/arrows2.png";
+import SignInOverlay from "../../components/signIn/signIn";
 
 const MyPage = () => {
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const toggleOverlay = () => {
+    setShowOverlay(!showOverlay);
+  };
+
   return (
-    <div>
+    <div className="welcomePage">
       <NavBar></NavBar>
 
       <div className="container">
@@ -27,13 +34,17 @@ const MyPage = () => {
 
           <div className="btnContainer">
             <div className="leftBtn">
-              <button id="signIn">Sign In</button>
+              <button id="signIn" onClick={toggleOverlay}>
+                Sign In
+              </button>
             </div>
             <div className="rightBtn">
               <button id="signUp">Sign Up</button>
             </div>
           </div>
         </div>
+
+        <SignInOverlay show={showOverlay} onClose={toggleOverlay} />
 
         <div className="left">
           <img src={arrow} alt="Swap arrows" className="image" />
