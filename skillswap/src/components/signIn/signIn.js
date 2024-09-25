@@ -14,7 +14,7 @@ const Overlay = ({ show, onClose }) => {
   const handleSubmit = () => {
     logIn();
 
-    console.log(userData);
+    console.log(localStorage);
     // onClose(); // Close the overlay after submission
   };
 
@@ -23,9 +23,11 @@ const Overlay = ({ show, onClose }) => {
       const data = await signin(text, password);
 
       setUserData(data);
+      localStorage.setItem("token", data.token);
 
       if (data) {
-        navigate(`/community/${data.user._id}`);
+        // navigate(`/community/${data.user._id}`);
+        navigate(`/chat/${data.user._id}`);
       } else {
         alert("email or password incorrect");
       }

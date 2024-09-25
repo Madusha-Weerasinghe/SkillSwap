@@ -1,0 +1,19 @@
+.messageInput {
+  display: grid;
+  grid-template-columns: 4fr 1fr; /* Two equal columns */
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  height: 40px;
+}
+
+.input {
+  background-color: white;
+  padding-right: 20px;
+}
+
+#messageText {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}

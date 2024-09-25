@@ -1,0 +1,59 @@
+.chatCard {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  height: 45px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+@keyframes scaleBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.chatCard {
+  transition: font-size 0.2s ease, line-height 0.2s ease;
+}
+
+.chatCard :hover {
+  animation: scaleBounce 0.3s ease-in-out;
+}
+
+.chatCardLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatCardRight {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.propic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  align-self: center;
+}
+
+#chatName {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#lastMessage {
+  font-size: 10px;
+  margin-top: 0;
+}
+
+.chatName {
+  line-height: 0.9;
+}

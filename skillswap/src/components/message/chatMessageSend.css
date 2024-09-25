@@ -1,0 +1,34 @@
+.chatSendContainer {
+  display: grid;
+}
+
+.chatMessageLeft {
+  background-color: #5194f8;
+  margin: 5px;
+  padding: 10px;
+  padding-bottom: 20px;
+  padding-right: 40px;
+  display: inline-block; /* Makes the width adjust to content */
+  /* Optional: limits width if message is too long */
+  border-radius: 25px;
+  border-bottom-right-radius: 0px;
+  color: white;
+  position: relative; /* For absolute positioning of the time */
+  word-wrap: break-word; /* Break long words if necessary */
+  clear: both;
+  justify-self: end; /* Aligns the message to the right */
+  text-align: right;
+  max-width: 300px; /* Ensures the text inside is aligned right */
+}
+
+#messageId {
+  display: block; /* Ensures the message is separated from the time */
+}
+
+.time {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6em; /* Smaller font for time */
+  color: lightgray; /* Subtle color for time */
+}

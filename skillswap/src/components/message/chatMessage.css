@@ -1,0 +1,28 @@
+.chatMessage {
+  background-color: blueviolet;
+  margin: 5px;
+  padding: 10px;
+  padding-bottom: 20px;
+  padding-right: 40px;
+  display: inline-block; /* Makes the width adjust to content */
+  max-width: 80%; /* Optional: limits width if message is too long */
+  border-radius: 5px;
+  border-radius: 25px;
+  border-bottom-left-radius: 0px;
+  color: white; /* Ensure text is visible */
+  position: relative; /* For absolute positioning of the time */
+  word-wrap: break-word;
+  /* Break long words if necessary */
+}
+
+#messageId {
+  display: block; /* Ensures the message is separated from the time */
+}
+
+.time {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6em; /* Smaller font for time */
+  color: lightgray; /* Subtle color for time */
+}

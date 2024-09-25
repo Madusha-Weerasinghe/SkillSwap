@@ -1,6 +1,15 @@
 const userModel = require("../models/userModal");
 
-const createUser = (name, password, email, age, country) => {
+const createUser = (
+  name,
+  password,
+  email,
+  age,
+  country,
+  skils,
+  followers,
+  following
+) => {
   try {
     if (!name || !password || !email || !age || !country) {
       throw new Error("detail is required");
@@ -12,6 +21,9 @@ const createUser = (name, password, email, age, country) => {
       email: email,
       age: age,
       country: country,
+      skils: skils,
+      followers: followers,
+      following: following,
     });
 
     return newUser;
@@ -23,7 +35,7 @@ const createUser = (name, password, email, age, country) => {
 
 const getUserById = (userid) => {
   try {
-    const user = userModel.find({ id: userid });
+    const user = userModel.find({ _id: userid });
     return user || null;
   } catch (error) {
     console.error(error);

@@ -3,10 +3,12 @@ const asyncHandler = require("express-async-handler");
 const userModal = require("../models/userModal");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 const createUser = asyncHandler(async (req, res) => {
   try {
-    const { name, password, email, age, country } = req.body;
+    const { name, password, email, age, country, skils, followers, following } =
+      req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -15,7 +17,10 @@ const createUser = asyncHandler(async (req, res) => {
       hashedPassword,
       email,
       age,
-      country
+      country,
+      skils,
+      followers,
+      following
     );
 
     console.log("New Method:", newUser);
@@ -32,6 +37,30 @@ const createUser = asyncHandler(async (req, res) => {
 
 const getAllUsers = asyncHandler(async (req, res) => {
   const response2 = await userModal.find({});
+
+  if (response2) {
+    res.status(201).json(response2);
+  } else {
+    res.status(200).json("no users found");
+  }
+});
+
+const getUser = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+
+  const response2 = await userService.getUserById(userId);
+
+  if (response2) {
+    res.status(201).json(response2);
+  } else {
+    res.status(200).json("no users found");
+  }
+});
+
+const getUserById = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+
+  const response2 = await userService.getUserById(userId);
 
   if (response2) {
     res.status(201).json(response2);
@@ -65,6 +94,7 @@ const login = asyncHandler(async (req, res) => {
   );
 
   console.log(user);
+  console.log(token);
   return res.status(200).json({
     user,
     token,
@@ -94,4 +124,6 @@ module.exports = {
   getAllUsers,
   updateUser,
   login,
+  getUser,
+  getUserById,
 };
