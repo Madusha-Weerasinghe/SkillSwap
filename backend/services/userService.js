@@ -8,10 +8,12 @@ const createUser = (
   country,
   skils,
   followers,
-  following
+  following,
+  gender,
+  imageURL
 ) => {
   try {
-    if (!name || !password || !email || !age || !country) {
+    if (!name || !password || !email || !age || !country || !gender) {
       throw new Error("detail is required");
     }
 
@@ -24,6 +26,8 @@ const createUser = (
       skils: skils,
       followers: followers,
       following: following,
+      gender: gender,
+      imageURL: imageURL,
     });
 
     return newUser;

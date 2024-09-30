@@ -7,8 +7,18 @@ const mongoose = require("mongoose");
 
 const createUser = asyncHandler(async (req, res) => {
   try {
-    const { name, password, email, age, country, skils, followers, following } =
-      req.body;
+    const {
+      name,
+      password,
+      email,
+      age,
+      country,
+      skils,
+      followers,
+      following,
+      gender,
+      imageURL,
+    } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -20,7 +30,9 @@ const createUser = asyncHandler(async (req, res) => {
       country,
       skils,
       followers,
-      following
+      following,
+      gender,
+      imageURL
     );
 
     console.log("New Method:", newUser);

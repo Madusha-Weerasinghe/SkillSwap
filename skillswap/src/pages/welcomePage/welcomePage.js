@@ -3,12 +3,18 @@ import NavBar from "../../components/navBar/navBar";
 import "./welcomePage.css";
 import arrow from "../../assets/img/welcomePage/arrows2.png";
 import SignInOverlay from "../../components/signIn/signIn";
+import SignUp from "../../components/signUp/signUp";
 
 const MyPage = () => {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [showOverlayTwo, setShowOverlayTwo] = useState(false);
 
   const toggleOverlay = () => {
     setShowOverlay(!showOverlay);
+  };
+
+  const toggleOverlayTwo = () => {
+    setShowOverlayTwo(!showOverlayTwo);
   };
 
   return (
@@ -39,12 +45,16 @@ const MyPage = () => {
               </button>
             </div>
             <div className="rightBtn">
-              <button id="signUp">Sign Up</button>
+              <button id="signUp" onClick={toggleOverlayTwo}>
+                Sign Up
+              </button>
             </div>
           </div>
         </div>
 
         <SignInOverlay show={showOverlay} onClose={toggleOverlay} />
+
+        <SignUp show={showOverlayTwo} onClose={toggleOverlayTwo} />
 
         <div className="left">
           <img src={arrow} alt="Swap arrows" className="image" />

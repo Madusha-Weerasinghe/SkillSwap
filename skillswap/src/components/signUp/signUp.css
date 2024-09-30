@@ -1,0 +1,148 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#title {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+#subTitle {
+  font-size: 12px;
+}
+
+input {
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, 0.4);
+  padding-left: 10px;
+}
+
+#email {
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#signInBtn {
+  width: 100%;
+  border-radius: 15px;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  margin-top: 30px;
+}
+
+#closeIcon {
+  font-size: 20px;
+  /* background-color: yellow; */
+  width: 22px;
+  height: 22px;
+  margin-left: 95%;
+  cursor: pointer;
+}
+
+#closeIconBtn {
+  width: 30px;
+  background-color: yellow;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+#warningText {
+  color: red;
+}
+
+#ageBox {
+  height: 35px;
+}
+
+.step2top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#genderBox {
+  height: 35px;
+}
+
+.step2top {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+#countryBox {
+  height: 35px;
+}
+
+.proImage img {
+  width: 150px;
+  align-self: center;
+  height: 150px;
+}
+
+.proImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure the container takes the full width */
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+#profileImg {
+  border: none;
+  margin-top: 10px;
+}
+
+#uploadImage {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.agreement {
+  height: 250px;
+  width: 400px;
+  overflow-y: scroll;
+}
+
+#policy {
+  font-size: 12px;
+}
+
+.agrementCheck {
+  display: flex;
+  align-items: center;
+}
+
+#agree {
+  width: 15px;
+}
