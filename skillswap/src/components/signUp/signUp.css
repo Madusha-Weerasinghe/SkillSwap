@@ -80,6 +80,8 @@ a {
 
 #ageBox {
   height: 35px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
 
 .step2top {
@@ -89,6 +91,8 @@ a {
 
 #genderBox {
   height: 35px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
 
 .step2top {
@@ -98,6 +102,8 @@ a {
 
 #countryBox {
   height: 35px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
 
 .proImage img {
@@ -145,4 +151,39 @@ p {
 
 #agree {
   width: 15px;
+}
+
+#profileImg {
+  height: 40px;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  width: 300px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+.custom-file-upload:active {
+  background-color: #3e8e41;
+  transform: scale(0.98);
+}
+
+#commonInput {
+  margin-top: 5px;
 }

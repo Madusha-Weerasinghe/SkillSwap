@@ -9,7 +9,16 @@ import { storage } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import { signUp } from "../../service/signIn/signInService";
+import uploadCover from "../../assets/img/signUp/uploadCover.png";
 
+const maleImage =
+  "https://firebasestorage.googleapis.com/v0/b/skillswap-c946e.appspot.com/o/coverImages%2Fmale-ezgif.com-webp-to-png-converter.png?alt=media&token=4baa7aa6-9242-4032-8552-c2e3650ffdb6";
+
+const femaleImage =
+  "https://firebasestorage.googleapis.com/v0/b/skillswap-c946e.appspot.com/o/coverImages%2Ffemale_avatar-removebg-preview.png?alt=media&token=ac895e5a-929f-4ba3-97f6-ce9f7a54fb2a";
+
+const otherImage =
+  "https://firebasestorage.googleapis.com/v0/b/skillswap-c946e.appspot.com/o/coverImages%2Fpeople-icon-isolated-flat-design-260nw-1663891741-removebg-preview.png?alt=media&token=5cbd75d5-7b11-49b3-a470-2688dcb63da4";
 const Overlay = ({ show, onClose }) => {
   const [text, setText] = useState("");
   const [password, setPassword] = useState("");
@@ -94,8 +103,20 @@ const Overlay = ({ show, onClose }) => {
     }
   };
 
+  const setImage = () => {
+    if (imageUpload) {
+      uploadImage();
+    } else if (gender === "male") {
+      setImageUrl(maleImage);
+    } else if (gender === "female") {
+      setImageUrl(femaleImage);
+    } else {
+      setImageUrl(otherImage);
+    }
+  };
+
   const handleNext2 = () => {
-    uploadImage();
+    setImage();
     console.log(userName);
     console.log(email);
     console.log(confirmpassword);
@@ -145,24 +166,6 @@ const Overlay = ({ show, onClose }) => {
     });
   };
 
-  const logIn = async () => {
-    try {
-      const data = await signin(text, password);
-
-      setUserData(data);
-      localStorage.setItem("token", data.token);
-
-      if (data) {
-        // navigate(`/community/${data.user._id}`);
-        navigate(`/chat/${data.user._id}`);
-      } else {
-        alert("email or password incorrect");
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-
   // Function to handle checkbox change
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked); // Assigns true when checked, false when unchecked
@@ -188,9 +191,10 @@ const Overlay = ({ show, onClose }) => {
               <span id="subTitle">Stay proficient by learning new skills.</span>
             </p>
             <p>
-              <span id="userName">User Name</span>
+              <span id="userName">User Name *</span>
               <input
                 type="text"
+                id="commonInput"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder="User Name"
@@ -198,19 +202,21 @@ const Overlay = ({ show, onClose }) => {
             </p>
 
             <p>
-              <span id="email">Email</span>
+              <span id="email">Email *</span>
               <input
                 type="text"
+                id="commonInput"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Password"
+                placeholder="Email"
               />
             </p>
 
             <p>
-              <span id="password">Password</span>
+              <span id="password">Password *</span>
               <input
                 type="text"
+                id="commonInput"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
@@ -218,9 +224,10 @@ const Overlay = ({ show, onClose }) => {
             </p>
 
             <p>
-              <span id="confirmpassword">Confirm Password</span>
+              <span id="confirmpassword">Confirm Password *</span>
               <input
                 type="text"
+                id="commonInput"
                 value={confirmpassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
@@ -229,7 +236,7 @@ const Overlay = ({ show, onClose }) => {
 
             {pwdCheck === 1 && (
               <>
-                <p id="warningText">Fields are connot be empty</p>
+                <p id="warningText">'*' Fields are connot be empty</p>
               </>
             )}
             {pwdCheck === 2 && (
@@ -262,7 +269,7 @@ const Overlay = ({ show, onClose }) => {
             <div className="step2top">
               <div className="ageSection">
                 <p>
-                  <span id="age">Age</span>
+                  <span id="age">Age *</span>
                   <br></br>
                   <select
                     id="ageBox"
@@ -281,7 +288,7 @@ const Overlay = ({ show, onClose }) => {
               </div>
               <div className="genderSection">
                 <p>
-                  <span id="gender">Gender</span>
+                  <span id="gender">Gender *</span>
                   <br></br>
                   <select
                     id="genderBox"
@@ -298,14 +305,16 @@ const Overlay = ({ show, onClose }) => {
             </div>
 
             <p>
-              <span id="country">Country</span>
+              <span id="country">Country *</span>
               <br></br>
               <select
                 id="countryBox"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
               >
-                <option value="">Select Country</option>
+                <option id="selectCountry" value="">
+                  Select Country
+                </option>
                 {countries.map((country) => (
                   <option key={country} value={country}>
                     {country}
@@ -317,23 +326,45 @@ const Overlay = ({ show, onClose }) => {
             <p>
               <span id="uploadImage">Upload Profile Image</span>
 
-              <input
-                id="profileImg"
-                type="file"
-                onChange={(e) => setImageUpload(e.target.files[0])}
-                accept="image/*"
-              />
+              <div className="file-upload">
+                <input
+                  id="profileImg"
+                  type="file"
+                  onChange={(e) => setImageUpload(e.target.files[0])}
+                  accept="image/*"
+                />
+                <label htmlFor="profileImg" className="custom-file-upload">
+                  Upload Profile Image
+                </label>
+              </div>
             </p>
 
-            {imageUpload && (
+            {imageUpload ? (
               <div className="proImage">
-                <img src={URL.createObjectURL(imageUpload)}></img>
+                <img
+                  src={URL.createObjectURL(imageUpload)}
+                  alt="Uploaded preview"
+                />
+              </div>
+            ) : gender ? (
+              <div className="proImage">
+                {gender === "male" ? (
+                  <img src={maleImage} alt="Male default image" />
+                ) : gender === "female" ? (
+                  <img src={femaleImage} alt="Female default image" />
+                ) : (
+                  <img src={otherImage} alt="Default image" />
+                )}
+              </div>
+            ) : (
+              <div className="proImage">
+                <img src={uploadCover} alt="Default image" />
               </div>
             )}
 
             {pwdCheck === 3 && (
               <>
-                <p>Fields are connot be empty</p>
+                <p id="warningText">'*' Fields are connot be empty</p>
               </>
             )}
 
@@ -358,7 +389,7 @@ const Overlay = ({ show, onClose }) => {
               <span id="subTitle">Stay proficient by learning new skills.</span>
             </p>
 
-            <p>privacy and policy</p>
+            <p>Our Terms and Conditions</p>
 
             <div className="agreement">
               <p id="policy">
@@ -440,7 +471,7 @@ const Overlay = ({ show, onClose }) => {
 
             {pwdCheck === 4 && (
               <>
-                <p>Need to agree with terms and conditions</p>
+                <p id="warningText">Need to agree with terms and conditions</p>
               </>
             )}
 
