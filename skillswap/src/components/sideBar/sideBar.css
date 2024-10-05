@@ -1,0 +1,55 @@
+.menuTop {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 30px;
+
+  padding-bottom: 20px;
+}
+
+.menuImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuImg img {
+  width: 50px;
+  align-self: center;
+  border-radius: 25px;
+  border: solid 2px white;
+}
+
+#greeting {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom: solid 1px rgb(224, 224, 224);
+}
+
+#followingTitle {
+  font-size: 12px;
+}
+
+#followingCount {
+  font-size: 14px;
+}
+
+.followingStat {
+  text-align: center;
+}
+
+.menuItems {
+  padding: 15px;
+}
+
+.logOut {
+  padding: 15px;
+  margin-top: 40%;
+}

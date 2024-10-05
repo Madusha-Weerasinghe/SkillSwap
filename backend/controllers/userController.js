@@ -70,7 +70,21 @@ const getUser = asyncHandler(async (req, res) => {
 });
 
 const getUserById = asyncHandler(async (req, res) => {
+  console.log("this is called");
   const userId = req.params.id;
+  console.log(userId);
+
+  const response2 = await userService.getUserById(userId);
+  console.log(response2);
+  if (response2) {
+    res.status(201).json(response2);
+  } else {
+    res.status(200).json("no users found");
+  }
+});
+
+const getUserByToken = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
 
   const response2 = await userService.getUserById(userId);
 
@@ -138,4 +152,5 @@ module.exports = {
   login,
   getUser,
   getUserById,
+  getUserByToken,
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./chatCard.css";
 import propic from "../../assets/img/chatCard/propic.jpg";
 import { getUserById } from "../../service/userService";
+import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
 
 const ChatCard = ({ id, setChatId }) => {
   const [user, setUser] = useState(null);
@@ -20,6 +21,7 @@ const ChatCard = ({ id, setChatId }) => {
 
   const handleClick = () => {
     setChatId(id);
+    console.log(user);
   };
   return (
     <div className="chatCard" onClick={handleClick}>

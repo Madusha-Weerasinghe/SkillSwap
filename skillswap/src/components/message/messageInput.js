@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./messageInput.css";
 import { sendMessage } from "../../service/messageService/messageService";
+import send from "../../assets/img/message/send.png";
 
 const ChatInput = ({ chatId, socket }) => {
   const [text, setText] = useState("");
 
   const sendBtnFunction = async () => {
-    if (!text.trim()) return; // Do nothing if the input is empty
+    if (!text.trim()) return;
 
     // Send the message via your API service
     await sendMessage(chatId, text);
@@ -17,7 +18,6 @@ const ChatInput = ({ chatId, socket }) => {
       message: text,
     });
 
-    // Clear the text input after sending
     setText("");
   };
 
@@ -34,15 +34,14 @@ const ChatInput = ({ chatId, socket }) => {
             width: "100%",
             resize: "vertical",
             padding: "5px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
+
+            border: "1px solid black",
+            borderRadius: "15px",
           }}
         />
       </div>
       <div className="sendBtn">
-        <button id="send" onClick={sendBtnFunction}>
-          send
-        </button>
+        <img src={send} onClick={sendBtnFunction} id="sendIcon" />
       </div>
     </div>
   );

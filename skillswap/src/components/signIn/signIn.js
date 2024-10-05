@@ -27,7 +27,8 @@ const Overlay = ({ show, onClose }) => {
 
       if (data) {
         // navigate(`/community/${data.user._id}`);
-        navigate(`/chat/${data.user._id}`);
+        // navigate(`/chat/${data.user._id}`);
+        navigate(`/main/`);
       } else {
         alert("email or password incorrect");
       }

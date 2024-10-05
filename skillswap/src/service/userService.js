@@ -19,10 +19,26 @@ export const getUser = async () => {
 export const getUserById = async (id) => {
   const token = localStorage.getItem("token");
 
+  try {
+    const response = await axiosInstance.get(`user/get-userbyid/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getUserByToken = async () => {
+  const token = localStorage.getItem("token");
+
   console.log(token);
 
   try {
-    const response = await axiosInstance.get(`user/get-userbyid/${id}`, {
+    const response = await axiosInstance.get(`user/get-user-by-token`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -7,6 +7,7 @@ import ChatMessage from "../../components/message/chatMessage";
 import ChatInput from "../../components/message/messageInput";
 import { io } from "socket.io-client";
 import ChatMessageLeft from "../../components/message/chatMessageSend";
+import SideBar from "../../components/sideBar/SideBar";
 
 // Initialize socket globally
 const socket = io("http://localhost:8070");
@@ -70,7 +71,6 @@ const Chat = () => {
 
   return (
     <div className="chatContainer">
-      <div className="menubar">menu</div>
       <div className="chatlist">
         <div className="chats">
           <span id="chattitle">Your Chats</span>
