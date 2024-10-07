@@ -34,10 +34,12 @@ connection.once("open", () => {
 const userRouter = require("./routes/userRoute.js");
 const loginSignUpRouter = require("./routes/loginSignUpRoute.js");
 const messageRouter = require("./routes/messageRoute.js");
+const agreementRouter = require("./routes/agreementRoute.js");
 
 app.use("/user", protect, userRouter);
 app.use("/", loginSignUpRouter);
 app.use("/chat", protect, messageRouter);
+app.use("/agreement", protect, agreementRouter);
 
 server.listen(PORT, () => {
   console.log("server is up and running on port %d", PORT);

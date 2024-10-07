@@ -1,7 +1,4 @@
 const messegeService = require("../services/messegeService");
-const asyncHandler = require("express-async-handler");
-const userModal = require("../models/messageModal");
-const jwt = require("jsonwebtoken");
 
 const sendMessage = async (req, res) => {
   try {
