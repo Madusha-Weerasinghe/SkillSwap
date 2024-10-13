@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./messageInput.css";
 import { sendMessage } from "../../service/messageService/messageService";
-import send from "../../assets/img/message/send.png";
+import send from "../../assets/img/message/send2.png";
+import agreement from "../../assets/img/message/agreement2.png";
 
-const ChatInput = ({ chatId, socket }) => {
+const ChatInput = ({ chatId, socket, onClose, id }) => {
   const [text, setText] = useState("");
 
   const sendBtnFunction = async () => {
@@ -41,7 +42,12 @@ const ChatInput = ({ chatId, socket }) => {
         />
       </div>
       <div className="sendBtn">
-        <img src={send} onClick={sendBtnFunction} id="sendIcon" />
+        <div className="sendIcon">
+          <img src={send} onClick={sendBtnFunction} id="sendIcon" />
+        </div>
+        <div className="agreementIcon">
+          <img src={agreement} onClick={onClose} id="sendIcon" />
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import ChatInput from "../../components/message/messageInput";
 import { io } from "socket.io-client";
 import ChatMessageLeft from "../../components/message/chatMessageSend";
 import SideBar from "../../components/sideBar/SideBar";
+import AgreementOverlay from "../../components/agreementOverlay/agreement";
 
 // Initialize socket globally
 const socket = io("http://localhost:8070");
@@ -17,6 +18,12 @@ const Chat = () => {
   const [loading, setLoading] = useState(true);
   const [chatId, setChatId] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [chater, setChater] = useState(false);
+
+  const toggleOverlay = () => {
+    setShowOverlay(!showOverlay);
+  };
 
   const getUserData = async () => {
     try {
@@ -113,9 +120,16 @@ const Chat = () => {
           )}
         </div>
         <div className="sendMessage">
-          <ChatInput chatId={chatId} socket={socket} /> {/* Pass socket */}
+          <ChatInput chatId={chatId} socket={socket} onClose={toggleOverlay} />{" "}
+          {/* Pass socket */}
         </div>
       </div>
+      <AgreementOverlay
+        show={showOverlay}
+        onClose={toggleOverlay}
+        user={user}
+        id={chatId}
+      />
     </div>
   );
 };
